@@ -4,7 +4,7 @@
 pass = 1 · partial = 0.5 · fail = 0 · `na` and `unknown` are left out (not counted as fail).
 
 ## Area score (0–100)
-area = round( Σ(value × weight) / Σ(weight) × 100 ) over the **measured** signals of that area.
+area = floor( Σ(value × weight) / Σ(weight) × 100 ) (round down) over the **measured** signals of that area.
 An area with no measured signal has no score and is left out of the total.
 
 ## Area weights (sum 100)
@@ -22,7 +22,7 @@ An area with no measured signal has no score and is left out of the total.
 | Language | 4 |
 
 ## Total
-total = round( Σ(area score × area weight) / Σ(area weight) ) over measured areas.
+total = floor( Σ(area score × area weight) / Σ(area weight) ) over measured areas — always round **down**, so a site with any `fail` or `partial` never shows 100 (99.52 → 99).
 
 ## Gates (caps applied after the total)
 | Gate | Condition | Max total |

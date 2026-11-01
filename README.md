@@ -4,6 +4,8 @@
 
 **Sitenizi Google ve yapay zekâ okuyabiliyor mu?** En önemli 24 sinyali kanıta dayanarak kontrol eden ücretsiz Claude skill'i. Türkçe ve İngilizce rapor.
 
+**See an example report / Örnek rapor:** [examples/woodstonestudio.com.md](examples/woodstonestudio.com.md)
+
 ## Install / Kurulum
 Any agent that supports skills (Claude Code, Codex, Cursor and more) / Skill destekleyen her ajan:
 ```
