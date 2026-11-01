@@ -5,6 +5,11 @@
 **Sitenizi Google ve yapay zekâ okuyabiliyor mu?** En önemli 24 sinyali kanıta dayanarak kontrol eden ücretsiz Claude skill'i. Türkçe ve İngilizce rapor.
 
 ## Install / Kurulum
+Any agent that supports skills (Claude Code, Codex, Cursor and more) / Skill destekleyen her ajan:
+```
+npx skills add Woodstonestudio/geo-audit-lite
+```
+
 Claude Code:
 ```
 /plugin marketplace add Woodstonestudio/geo-audit-lite
