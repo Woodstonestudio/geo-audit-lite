@@ -1,0 +1,5 @@
+{
+  "name": "woodstonestudio-free",
+  "owner": { "name": "WoodstoneStudio", "url": "https://woodstonestudio.com" },
+  "plugins": [ { "name": "geo-audit-lite", "source": "./", "description": "Free 24-signal GEO audit." } ]
+}

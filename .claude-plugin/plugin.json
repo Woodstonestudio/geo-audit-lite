@@ -1,0 +1,9 @@
+{
+  "name": "geo-audit-lite",
+  "version": "1.0.1",
+  "description": "Free GEO audit for Claude: can Google and AI search (ChatGPT, Claude, Perplexity) read your site? 24 key signals, evidence only.",
+  "author": { "name": "WoodstoneStudio", "url": "https://woodstonestudio.com" },
+  "homepage": "https://woodstonestudio.com",
+  "license": "MIT",
+  "keywords": ["seo", "geo", "ai-search", "audit", "llms.txt", "robots.txt"]
+}
