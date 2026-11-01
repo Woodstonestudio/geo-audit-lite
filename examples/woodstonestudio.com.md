@@ -1,4 +1,4 @@
-> **Example report.** A real run of the **full version** ([GEO Agent Team](https://buy.polar.sh/polar_cl_f2U4MFgb5c5drxsz566CbomAj2BGhgQ2Ou8qG3Wf2CZ), 78 signals, v1.1.2) on our own site, 1 November 2026. The only change: the total is shown with the v1.1.3 rounding rule (round down, so a site with an open issue never shows 100). The free version in this repo produces the same kind of report on the 24 most important of these signals.
+> **Example report.** A real run of the **full version** ([GEO Agent Team](https://buy.polar.sh/polar_cl_f2U4MFgb5c5drxsz566CbomAj2BGhgQ2Ou8qG3Wf2CZ), 78 signals, v1.1.2) on our own site, 1 November 2026. Two changes since that run: the total is shown with the v1.1.3 rounding rule (round down, so a site with an open issue never shows 100), and one note was removed. It said the visible FAQ did not match the FAQPage schema; that was wrong, because the collector did not read FAQ questions inside `<details>` toggles. Fixed in v1.1.4, which now checks every schema question against the visible page text. The free version in this repo produces the same kind of report on the 24 most important of these signals.
 
 # woodstonestudio.com — Google + AI search readiness
 
@@ -50,7 +50,6 @@ Not counted: `speed.perf`, `speed.lcp`, `speed.cls`, `speed.tbt` are `unknown` (
 ### Notes (not scored)
 - **Response time varies.** This run measured 268 ms TTFB (pass), with 115–127 ms on repeat checks. An earlier run today measured 2,418 ms on the first, uncached request. The headers show GitHub Pages (Fastly) behind Cloudflare with `cf-cache-status: DYNAMIC`, so Cloudflare does not cache the HTML. A Cloudflare cache rule for HTML would smooth out cold requests.
 - **Review in the Organization schema:** The `review` attached to your own Organization is self-serving, so Google won't show review stars for it. It is harmless, but expect no rich result from it.
-- **Visible FAQ vs. FAQPage schema:** The visible question headings ("WoodstoneStudio ne yapar?", "Bir web sitesi ne kadar sürede yayına çıkar?", …) are different from the 10 questions in the FAQPage JSON-LD. Google asks that FAQ markup match the visible text, so align the two.
 - **Local search is optional:** The site is scored as online-only. If you want to appear for searches like "İzmir web tasarım", add a city or address and a Google Business Profile link.
 
 ## What is already good

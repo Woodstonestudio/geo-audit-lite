@@ -103,7 +103,7 @@ class Page(HTMLParser):
     def __init__(self):
         super().__init__(convert_charrefs=True)
         self.meta, self.links, self.a, self.imgs, self.scripts = [], [], [], [], []
-        self.h = {"h1": [], "h2": [], "h3": []}
+        self.h = {"h1": [], "h2": [], "h3": [], "summary": [], "dt": []}
         self.title, self.lang, self.forms, self.iframes = "", None, 0, []
         self.jsonld, self._buf, self._in, self._skip = [], [], None, 0
         self.text = []
@@ -132,7 +132,7 @@ class Page(HTMLParser):
                 self._skip += 1
         elif tag == "style":
             self._skip += 1
-        elif tag in ("title", "h1", "h2", "h3"):
+        elif tag in ("title", "h1", "h2", "h3", "summary", "dt"):
             self._in, self._buf = tag, []
 
     def handle_endtag(self, tag):
@@ -262,6 +262,22 @@ def main():
             walk(obj)
         except Exception:
             jsonld_errors += 1
+    norm = lambda x: re.sub(r"\W+", " ", (x or "").lower()).strip()
+    page_norm = norm(text)
+    faq_check = []
+
+    def faq_walk(o):
+        if isinstance(o, dict):
+            if o.get("@type") == "Question" and o.get("name"):
+                faq_check.append({"question": o["name"], "visible_on_page": norm(o["name"]) in page_norm})
+            for v in o.values():
+                faq_walk(v)
+        elif isinstance(o, list):
+            for v in o:
+                faq_walk(v)
+
+    for obj in jsonld:
+        faq_walk(obj)
     imgs = p.imgs
     img_src = [i.get("src", "") + " " + i.get("srcset", "") for i in imgs]
     hrefs = [h for h in p.a if h]
@@ -277,6 +293,7 @@ def main():
         "canonical": canon, "favicon": icons,
         "h1": p.h["h1"], "h2": p.h["h2"][:30], "h3_count": len(p.h["h3"]),
         "question_headings": [h for h in p.h["h2"] + p.h["h3"] if h.endswith("?")][:20],
+        "faq_toggles": [h for h in p.h["summary"] + p.h["dt"] if h][:30],
         "word_count": words, "text_sample": text[:600],
         "images": len(imgs), "images_without_alt": sum(1 for i in imgs if "alt" not in i),
         "images_modern_format": sum(1 for s in img_src if re.search(r"\.(webp|avif)\b", s, re.I)),
@@ -291,6 +308,7 @@ def main():
         "forms": p.forms,
         "jsonld_blocks": len(p.jsonld), "jsonld_invalid": jsonld_errors, "jsonld_types": sorted(set(map(str, types))),
         "jsonld": jsonld[:6],
+        "faq_schema_check": faq_check[:30],
         "og": {k: meta(k) for k in ("og:title", "og:description", "og:image", "og:type", "og:url", "og:site_name", "og:locale")},
         "meta_keys": sorted({(m.get("property") or m.get("name") or "").lower() for m in p.meta if (m.get("property") or m.get("name"))}),
         "twitter_card": meta("twitter:card"),

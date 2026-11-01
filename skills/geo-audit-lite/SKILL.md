@@ -46,7 +46,7 @@ Mapping hints (evidence key → signals; signals not in the free list are simply
 - `bot_tests` → ai.live_ai, ai.live_search, ai.parity. A refusal is reported as "hint", with the note that firewalls may reject spoofed user agents.
 - `page.word_count` → ai.ssr (server HTML has real text: ≥ 150 words pass, 50–149 partial, < 50 fail → gate K4) and content.words (≥ 300 pass, ≥ 150 partial)
 - `llms` → ai.llms (200, plain text, not HTML), ai.llms_links
-- `page.jsonld_types`, `page.jsonld_invalid`, `page.jsonld` → brand.org, brand.sameas, brand.logo, schema.present, schema.valid, schema.website, schema.faq, schema.local (address + telephone + openingHours all present)
+- `page.jsonld_types`, `page.jsonld_invalid`, `page.jsonld` → brand.org, brand.sameas, brand.logo, schema.present, schema.valid, schema.website, schema.faq, schema.local (address + telephone + openingHours all present). For FAQPage use `page.faq_schema_check`: every question in the schema must be visible on the page (`visible_on_page: true`). Visible Q&A that is *not* in the schema is fine and is not a mismatch. FAQ questions often sit in `<details>`/`<summary>` (see `page.faq_toggles`), not in headings.
 - `page.title_len` (30–65 pass), `page.description_len` (70–165 pass), `page.canonical`, `page.robots_meta`, `home.headers.x-robots-tag` → tech.title, tech.description, tech.canonical, tech.indexable
 - `sitemap`, `robots.sitemaps`, `not_found_test` (404/410 pass), `www_variant`, `http_redirect` (301/308 to https pass, 302 partial) → tech.sitemap, tech.sitemap_robots, tech.soft404, tech.www, sec.redirect
 - headers → sec.hsts, sec.nosniff, sec.frame (x-frame-options or CSP frame-ancestors), sec.referrer, sec.csp, sec.leak (server/x-powered-by shows a version number = fail)
