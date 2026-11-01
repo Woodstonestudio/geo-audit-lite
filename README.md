@@ -7,7 +7,7 @@
 ## Install / Kurulum
 Claude Code:
 ```
-/plugin marketplace add izmiradami/Woodstonestudio-geo-audit-lite
+/plugin marketplace add Woodstonestudio/geo-audit-lite
 /plugin install geo-audit-lite@woodstonestudio-free
 ```
 or copy `skills/geo-audit-lite` to `~/.claude/skills/`. Claude app: zip `skills/geo-audit-lite` and upload it under Settings → Capabilities → Skills.
