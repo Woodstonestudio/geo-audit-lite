@@ -224,6 +224,7 @@ def main():
         "content-type", "content-encoding", "strict-transport-security", "x-content-type-options",
         "x-frame-options", "content-security-policy", "referrer-policy", "server", "x-powered-by",
         "x-robots-tag", "cache-control", "cf-ray", "x-vercel-id")}
+    ev["home"]["header_keys"] = sorted(home["headers"].keys())
     if home["status"] is None:
         ev["notes"].append("Homepage could not be fetched at all: gate K1 applies.")
     html = home["body"]
@@ -290,7 +291,8 @@ def main():
         "forms": p.forms,
         "jsonld_blocks": len(p.jsonld), "jsonld_invalid": jsonld_errors, "jsonld_types": sorted(set(map(str, types))),
         "jsonld": jsonld[:6],
-        "og": {k: meta(k) for k in ("og:title", "og:description", "og:image", "og:type", "og:url")},
+        "og": {k: meta(k) for k in ("og:title", "og:description", "og:image", "og:type", "og:url", "og:site_name", "og:locale")},
+        "meta_keys": sorted({(m.get("property") or m.get("name") or "").lower() for m in p.meta if (m.get("property") or m.get("name"))}),
         "twitter_card": meta("twitter:card"),
         "scripts_total": len(p.scripts), "scripts_render_blocking": len(blocking),
         "old_tech": [t for t, rx in (("jQuery 1.x", r"jquery[-.]1\.\d"), ("Bootstrap 3", r"bootstrap/3\.|bootstrap-3"), ("Flash", r"\.swf\b|shockwave"), ("frameset", r"<frameset")) if re.search(rx, html, re.I)],

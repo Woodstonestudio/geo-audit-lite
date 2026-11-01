@@ -26,6 +26,9 @@ python3 "${CLAUDE_PLUGIN_ROOT:-.}/skills/geo-audit-lite/scripts/collect.py" http
 
 ## 2. Score the 24 key signals
 
+**Missing from the evidence is not missing from the site.** Before marking anything `fail` because a tag or header is absent, check `page.meta_keys` (every meta name/property on the page) and `home.header_keys` (every response header name). If the collector simply did not record it, look it up yourself (curl the page) or mark it `unknown`. Never report an absence you did not observe.
+
+
 Open `references/signals.en.md` (or `signals.tr.md` for Turkish reports). For each signal set exactly one status:
 
 | status | value | when |
