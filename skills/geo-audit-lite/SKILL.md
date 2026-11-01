@@ -39,7 +39,7 @@ Open `references/signals.en.md` (or `signals.tr.md` for Turkish reports). For ea
 Mapping hints (evidence key → signals; signals not in the free list are simply skipped):
 
 - `home.status`, `home.ttfb_ms`, `home.headers.content-encoding`, `home.bytes` → tech.status, speed.ttfb (≤ 600 ms pass, ≤ 1500 partial), speed.compress, speed.size (≤ 300 KB pass, ≤ 1 MB partial)
-- `robots.verdicts` → ai.robots_search (Googlebot + Bingbot allowed on "/"), ai.robots_ai (OAI-SearchBot, ChatGPT-User, Claude-SearchBot, PerplexityBot allowed), ai.path_conflict (AI bot group exists but lost rules that `*` has). Training bots (GPTBot, ClaudeBot, Google-Extended) being blocked is a **choice**, never a fail.
+- `robots.verdicts` → ai.robots_search (Googlebot + Bingbot allowed on "/"), ai.robots_ai (OAI-SearchBot, ChatGPT-User, Claude-SearchBot, PerplexityBot allowed), ai.path_conflict (AI bot group exists but lost rules that `*` has). Training bots (GPTBot, ClaudeBot, Google-Extended) being blocked is a **choice**, never a fail. The shared opt-out group `User-agent: __usage_ai-training` (announced Oct 2026 by OpenAI, Google, Microsoft and Anthropic; Anthropic honours it already, the others are rolling it out) also only closes training — report it as "training opt-out", never as blocking AI search.
 - `bot_tests` → ai.live_ai, ai.live_search, ai.parity. A refusal is reported as "hint", with the note that firewalls may reject spoofed user agents.
 - `page.word_count` → ai.ssr (server HTML has real text: ≥ 150 words pass, 50–149 partial, < 50 fail → gate K4) and content.words (≥ 300 pass, ≥ 150 partial)
 - `llms` → ai.llms (200, plain text, not HTML), ai.llms_links
