@@ -30,7 +30,7 @@ or copy `skills/geo-audit-lite` to `~/.claude/skills/`. Claude app: zip `skills/
 ## Want everything? / Tamamı
 **GEO Agent Team** (paid): all 78 signals, paste-ready fixes (robots.txt, llms.txt, JSON-LD, FAQ), competitor benchmarking, and an independent reviewer agent that checks every deliverable.
 
-**[Get GEO Agent Team — $19.99](https://buy.polar.sh/polar_cl_f2U4MFgb5c5drxsz566CbomAj2BGhgQ2Ou8qG3Wf2CZ)**
+**[Get GEO Agent Team — $9.99](https://buy.polar.sh/polar_cl_f2U4MFgb5c5drxsz566CbomAj2BGhgQ2Ou8qG3Wf2CZ)**
 
 Or run the full 78-signal scan in your browser for free: woodstonestudio.com/site-analizi
 
