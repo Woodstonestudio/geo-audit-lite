@@ -34,4 +34,6 @@ or copy `skills/geo-audit-lite` to `~/.claude/skills/`. Claude app: zip `skills/
 
 Or run the full 78-signal scan in your browser for free: woodstonestudio.com/site-analizi
 
+Need to audit many sites at once? Run the same 78-signal audit in the cloud on [Apify](https://apify.com/superstars/ai-search-readiness-audit) ($0.02 per scored site, JSON/CSV export, API and MCP access).
+
 MIT licensed. WoodstoneStudio Team.
